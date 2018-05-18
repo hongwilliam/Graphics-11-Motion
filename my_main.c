@@ -135,7 +135,7 @@ void my_main() {
 
       case BOX:
         add_box(tmp, op[i].op.box.d0[0], op[i].op.box.d0[1], op[i].op.box.d0[2], op[i].op.box.d1[0], op[i].op.box.d1[1], op[i].op.box.d1[2]);
-        matrix_mult(peek(systems), tmp);
+        matrix_mult(peek(systems), polygons);
         draw_polygons(polygons, t, zb, view, light, ambient, areflect, dreflect, sreflect);
         tmp->lastcol = 0;
         break;
@@ -149,14 +149,14 @@ void my_main() {
 
       case TORUS:
         add_torus(tmp, op[i].op.torus.d[0], op[i].op.torus.d[1], op[i].op.torus.d[2], op[i].op.torus.r0, op[i].op.torus.r1, step_3d);
-        matrix_mult(peek(systems), tmp);
+        matrix_mult(peek(systems), polygons);
         draw_polygons(polygons, t, zb, view, light, ambient, areflect, dreflect, sreflect);
         tmp->lastcol = 0;
         break;
 
       case LINE:
         add_edge(tmp, op[i].op.line.p0[0], op[i].op.line.p0[1], op[i].op.line.p0[2], op[i].op.line.p1[0], op[i].op.line.p1[1], op[i].op.line.p1[2]);
-        matrix_mult(peek(systems), tmp);
+        matrix_mult(peek(systems), polygons);
         draw_lines(tmp, t, zb, g);
         tmp->lastcol = 0;
         break;
